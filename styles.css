@@ -1,0 +1,226 @@
+/* Указываем box sizing */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* Убираем внутренние отступы */
+
+ul[class],
+ol[class] {
+    padding: 0;
+}
+
+
+/* Убираем внешние отступы */
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+
+/* Выставляем основные настройки по-умолчанию для body */
+
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+
+ul[class],
+ol[class] {
+    list-style: none;
+}
+
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+
+/* Упрощаем работу с изображениями */
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Наследуем шрифты для инпутов и кнопок */
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.container {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 1fr 100px;
+    --itemWidth: calc((100vw - 4rem - 4rem) / 5);
+}
+
+.header {
+    background-color: burlywood;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popular {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    background-color: darkorange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel {
+    position: relative;
+    display: flex;
+    max-width: 100vw;
+    height: 300px;
+    padding: 0 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.arrow {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.arrow:hover {
+    cursor: pointer;
+    background-color: aqua;
+}
+
+.arrow-back {
+    position: absolute;
+    left: 0;
+}
+
+.arrow-next {
+    position: absolute;
+    right: 0;
+}
+
+.arrow>img {
+    width: 32px;
+    height: 32px;
+}
+
+.arrow-next>img {
+    transform: rotate(180deg);
+}
+
+.carousel__item {
+    display: inline-block;
+    width: var(--itemWidth);
+    height: 250px;
+}
+
+.carousel__item {
+    margin-right: 1rem;
+}
+
+.carousel__item:nth-of-type(6n) {
+    margin-right: 2rem;
+}
+
+.carousel__item-img {
+    position: relative;
+    width: var(--itemWidth);
+    height: 250px;
+}
+
+.sale {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    background-color: #f55f44;
+    padding: .5rem;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: darkorchid;
+}
+
+.price::after {
+    content: " \20BD";
+}
+
+.price.price-old::after {
+    content: "";
+}
+
+.price-old {
+    color: gray;
+    font-size: 1rem;
+    text-decoration: line-through;
+}
+
+.price-new {
+    color: #f55f44;
+}
+
+.hidden {
+    display: none;
+}
